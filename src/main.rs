@@ -1,15 +1,10 @@
+#![allow(unused)]
 fn main() {
-    let tup = (500, 6.4, 1);
+    let a = [1, 2, 3, 4, 5];
 
-    let (_, y, _) = tup;
+    println!("The value of a[3] is: {}", a[3]);
 
-    println!("The value of y is: {y}");
+    let b: [i32; 5] = [1, 2, 3, 4, 5];
 
-    let x: (i32, f64, u8) = (500, 6.4, 1);
-
-    let _five_hundred = x.0;
-
-    let _six_point_four = x.1;
-
-    let _one = x.2;
+    println!("The value of b[3] is: {}", b[3]);
 }
