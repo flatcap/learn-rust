@@ -7,4 +7,8 @@ fn main() {
     let b: [i32; 5] = [1, 2, 3, 4, 5];
 
     println!("The value of b[3] is: {}", b[3]);
+
+    let c: [i32; 5] = [1; 5]; // equivalent to [1, 1, 1, 1, 1]
+
+    println!("The value of c[3] is: {}", c[3]);
 }
