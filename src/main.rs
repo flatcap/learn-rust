@@ -1,4 +1,6 @@
 #![allow(unused)]
+#![allow(unconditional_panic)]
+
 fn main() {
     let a = [1, 2, 3, 4, 5];
 
@@ -11,4 +13,6 @@ fn main() {
     let c: [i32; 5] = [1; 5]; // equivalent to [1, 1, 1, 1, 1]
 
     println!("The value of c[3] is: {}", c[3]);
+
+    let _ = c[5];
 }
