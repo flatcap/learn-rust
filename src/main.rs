@@ -1,4 +1,6 @@
 use std::io;
+use std::io::Write;
+use std::process;
 
 // Convert degrees Fahrenheit to Celsius
 fn f_to_c(fahrenheit: f64) -> f64 {
@@ -11,18 +13,27 @@ fn c_to_f(celsius: f64) -> f64 {
 }
 
 fn main() {
-    println!("Enter temperature:");
+    loop {
+        print!("Enter temperature: ");
+        io::stdout().flush().unwrap();
 
-    let mut temp = String::new();
-    io::stdin()
-        .read_line(&mut temp)
-        .expect("Failed to read line");
+        let mut temp = String::new();
+        io::stdin()
+            .read_line(&mut temp)
+            .expect("Failed to read line");
 
-    let temp: f64 = match temp.trim().parse() {
-        Ok(num) => num,
-        Err(_) => todo!(),
-    };
+        let temp = temp.trim();
+        if temp == "" {
+            process::exit(1);
+        }
 
-    println!("{:.2}℃ is {:.2}℉", temp, c_to_f(temp));
-    println!("{:.2}℉ is {:.2}℃", temp, f_to_c(temp));
+        let temp: f64 = match temp.parse() {
+            Ok(num) => num,
+            Err(_) => break,
+        };
+
+        println!("\t{:.2}℃ is {:.2}℉", temp, c_to_f(temp));
+        println!("\t{:.2}℉ is {:.2}℃", temp, f_to_c(temp));
+        println!("");
+    }
 }
