@@ -16,7 +16,9 @@ fn gift(day: u32) {
 
     for index in (0..day).rev() {
         let index = index as usize;
-        println!("\t{}", GIFTS[index]);
+        let and = if index == 0 && day > 1 { "and " } else { "" };
+        let punct = if index == 0 { "." } else { "," };
+        println!("\t{}{}{}", and, GIFTS[index], punct);
     }
 }
 
