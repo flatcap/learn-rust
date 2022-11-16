@@ -1,6 +1,5 @@
 use std::io;
 use std::io::Write;
-use std::process;
 
 // Convert degrees Fahrenheit to Celsius
 fn f_to_c(fahrenheit: f64) -> f64 {
@@ -24,7 +23,7 @@ fn main() {
 
         let temp = temp.trim();
         if temp == "" {
-            process::exit(1);
+            break;
         }
 
         let temp: f64 = match temp.parse() {
