@@ -28,11 +28,33 @@ fn main() {
 
         let temp: f64 = match temp.parse() {
             Ok(num) => num,
-            Err(_) => break,
+            Err(_) => {
+                println!("Invalid number");
+                break;
+            }
         };
 
-        println!("\t{:.2}℃ is {:.2}℉", temp, c_to_f(temp));
-        println!("\t{:.2}℉ is {:.2}℃", temp, f_to_c(temp));
+        print!("Enter scale [C|F]: ");
+        io::stdout().flush().unwrap();
+
+        let mut scale = String::new();
+        io::stdin()
+            .read_line(&mut scale)
+            .expect("Failed to read line");
+
+        match scale.trim().to_uppercase().as_str() {
+            "C" => {
+                println!("\t{:.2}℃ is {:.2}℉", temp, c_to_f(temp));
+            }
+            "F" => {
+                println!("\t{:.2}℉ is {:.2}℃", temp, f_to_c(temp));
+            }
+            _ => {
+                println!("Invalid scale");
+                break;
+            }
+        };
+
         println!("");
     }
 }
