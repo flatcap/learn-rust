@@ -26,7 +26,7 @@ fn pig_latin(word: &str) -> String {
         return word.to_string();
     }
 
-    let initial = &word[..1].chars().next().unwrap().to_lowercase().next().unwrap();
+    let initial = &word.chars().next().unwrap().to_lowercase().next().unwrap();
 
     match initial {
         'a' | 'e' | 'i' | 'o' | 'u' => pig_vowel(word),
