@@ -38,7 +38,14 @@ fn main() {
         depts.insert(fruit, dept);
     }
 
+    let mut list: Vec<String> = Vec::new();
+
     for (fruit, dept) in depts {
-        println!("{} -> {}", fruit, dept);
+        list.push(format!("{} {}", dept, fruit));
+    }
+
+    list.sort();
+    for i in list {
+        println!("{}", i);
     }
 }
