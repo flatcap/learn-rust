@@ -38,14 +38,21 @@ fn main() {
         depts.insert(fruit, dept);
     }
 
-    let mut list: Vec<String> = Vec::new();
+    let mut list: Vec<(String, String)> = Vec::new();
 
     for (fruit, dept) in depts {
-        list.push(format!("{} {}", dept, fruit));
+        // list.push(format!("{} {}", dept, fruit));
+        list.push((dept, fruit));
     }
 
     list.sort();
-    for i in list {
-        println!("{}", i);
+
+    let mut d = String::new();
+    for (dept, fruit) in list {
+        if dept != d {
+            println!("Department: {dept}");
+            d = dept;
+        }
+        println!("\t{}", fruit);
     }
 }
