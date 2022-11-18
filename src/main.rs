@@ -1,8 +1,10 @@
+use std::collections::HashMap;
 use std::io;
 use std::io::Write;
 
 fn main() {
     let mut numbers: Vec<i32> = Vec::new();
+
     loop {
         print!("Enter number: ");
         io::stdout().flush().unwrap();
@@ -44,4 +46,21 @@ fn main() {
         Some(median) => println!("The median is {}", median),
         None => println!("There is no median"),
     }
+
+    let mut hash = HashMap::new();
+    for i in &numbers {
+        let count = hash.entry(i).or_insert(0);
+        *count += 1;
+    }
+
+    let mut mode_number: i32 = 0;
+    let mut mode_count: i32 = 0;
+    for (number, count) in &hash {
+        if *count > mode_count {
+            mode_number = **number;
+            mode_count = *count;
+        }
+    }
+
+    println!("Mode number is {} ({} occurrences)", mode_number, mode_count);
 }
