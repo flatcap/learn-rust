@@ -1,3 +1,5 @@
+#![allow(unused)]
+
 use std::io;
 use std::io::Write;
 
@@ -20,8 +22,28 @@ fn main() {
 }
 
 fn pig_latin(word: &str) -> String {
-    match word.chars().next() {
-        Some('a') | Some('e') | Some('i') | Some('o') | Some('u') => { "vowel".to_string() }
-        _ => { "consonant".to_string() }
+    if word.len() < 2 {
+        return word.to_string();
+    }
+
+    let initial = &word[..1];
+
+    match initial {
+        "a" | "e" | "i" | "o" | "u" => pig_vowel(word),
+        "b" | "c" | "d" | "f" | "g" | "h" | "j" | "k" | "l" | "m" | "n" | "p" | "q" | "r" | "s"
+        | "t" | "v" | "w" | "x" | "y" | "z" => pig_consonant(word),
+        _ => word.to_string(),
+    }
+}
+
+fn pig_vowel(word: &str) -> String {
+    format!("{}-hay", word)
+}
+
+fn pig_consonant(word: &str) -> String {
+    if word.len() > 1 {
+        format!("{}-{}ay", &word[1..], &word[..1])
+    } else {
+        word.to_string()
     }
 }
