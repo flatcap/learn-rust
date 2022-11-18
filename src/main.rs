@@ -26,12 +26,12 @@ fn pig_latin(word: &str) -> String {
         return word.to_string();
     }
 
-    let initial = &word[..1];
+    let initial = &word[..1].chars().next().unwrap().to_lowercase().next().unwrap();
 
     match initial {
-        "a" | "e" | "i" | "o" | "u" => pig_vowel(word),
-        "b" | "c" | "d" | "f" | "g" | "h" | "j" | "k" | "l" | "m" | "n" | "p" | "q" | "r" | "s"
-        | "t" | "v" | "w" | "x" | "y" | "z" => pig_consonant(word),
+        'a' | 'e' | 'i' | 'o' | 'u' => pig_vowel(word),
+        'b' | 'c' | 'd' | 'f' | 'g' | 'h' | 'j' | 'k' | 'l' | 'm' | 'n' | 'p' | 'q' | 'r' | 's'
+        | 't' | 'v' | 'w' | 'x' | 'y' | 'z' => pig_consonant(word),
         _ => word.to_string(),
     }
 }
