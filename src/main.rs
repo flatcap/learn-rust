@@ -1,17 +1,15 @@
-#![allow(unused)]
-
 use std::io;
 use std::io::Write;
 
 fn main() {
     print!("Enter string: ");
     io::stdout().flush().unwrap();
-    println!("");
 
     let mut sentence = String::new();
     io::stdin()
         .read_line(&mut sentence)
         .expect("Failed to read line");
+    println!("");
 
     let sentence = sentence.trim();
 
