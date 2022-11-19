@@ -1,5 +1,13 @@
 #![allow(unused)]
 
+pub fn add_two(a: i32) -> i32 {
+    internal_adder(a, 2)
+}
+
+fn internal_adder(a: i32, b: i32) -> i32 {
+    a + b
+}
+
 pub struct Guess {
     value: i32,
 }
@@ -70,4 +78,10 @@ mod tests {
             Err(String::from("two plus two does not equal four"))
         }
     }
+
+    #[test]
+    fn internal() {
+        assert_eq!(4, internal_adder(2, 2));
+    }
 }
+
