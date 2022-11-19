@@ -32,6 +32,13 @@ impl Summary for Tweet {
     }
 }
 
+// This function is shorthand for the one below
 pub fn notify(item: &impl Summary) {
     println!("Breaking news! {}", item.summarize());
 }
+
+/* Trait bound syntax:
+pub fn notify<T: Summary>(item: &T) {
+    println!("Breaking news! {}", item.summarize());
+}
+*/
