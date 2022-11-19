@@ -53,4 +53,15 @@ pub fn notify(item: &(impl Summary + Display)) {
 
 // Require multiple traits with the '+' syntax (long form)
 pub fn notify<T: Summary + Display>(item: &T) {
+
+
+// SO MANY traits
+fn some_function<T: Display + Clone, U: Clone + Debug>(t: &T, u: &U) -> i32 {
+
+// Abbreviated using 'where' clauses:
+fn some_function<T, U>(t: &T, u: &U) -> i32
+where
+    T: Display + Clone,
+    U: Clone + Debug,
+{
 */
