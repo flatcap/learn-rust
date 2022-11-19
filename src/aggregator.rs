@@ -1,3 +1,5 @@
+#![allow(unused)]
+
 pub trait Summary {
     fn summarize_author(&self) -> String;
 
@@ -65,3 +67,14 @@ where
     U: Clone + Debug,
 {
 */
+
+fn returns_summarizable() -> impl Summary {
+    Tweet {
+        username: String::from("horse_ebooks"),
+        content: String::from(
+            "of course, as you probably already know, people",
+        ),
+        reply: false,
+        retweet: false,
+    }
+}
