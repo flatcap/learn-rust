@@ -41,4 +41,10 @@ pub fn notify(item: &impl Summary) {
 pub fn notify<T: Summary>(item: &T) {
     println!("Breaking news! {}", item.summarize());
 }
+
+// This form allows item1 and item2 to have different types, as long as they both implement Summary
+pub fn notify(item1: &impl Summary, item2: &impl Summary) {
+
+// This form forces item1 and item2 to be exactly the same type, that implements Summary
+pub fn notify<T: Summary>(item1: &T, item2: &T) {
 */
