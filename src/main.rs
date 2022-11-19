@@ -1,5 +1,10 @@
 #![allow(unused)]
 
+enum Result<T, E> {
+    Ok(T),
+    Err(E),
+}
+
 struct Point<T, U> {
     x: T,
     y: U,
