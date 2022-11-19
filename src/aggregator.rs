@@ -47,4 +47,10 @@ pub fn notify(item1: &impl Summary, item2: &impl Summary) {
 
 // This form forces item1 and item2 to be exactly the same type, that implements Summary
 pub fn notify<T: Summary>(item1: &T, item2: &T) {
+
+// Require multiple traits with the '+' syntax (short form)
+pub fn notify(item: &(impl Summary + Display)) {
+
+// Require multiple traits with the '+' syntax (long form)
+pub fn notify<T: Summary + Display>(item: &T) {
 */
