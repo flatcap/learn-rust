@@ -22,4 +22,6 @@ fn main() {
     };
 
     println!("New article available! {}", article.summarize());
+
+    aggregator::notify(&article);
 }
