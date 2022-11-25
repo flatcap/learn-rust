@@ -1,3 +1,5 @@
+#![allow(unused)]
+
 use std::thread;
 
 #[derive(Debug, PartialEq, Copy, Clone)]
@@ -62,7 +64,35 @@ fn test_move() {
         .unwrap();
 }
 
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+fn test_rect() {
+    let mut list = [
+        Rectangle {
+            width: 10,
+            height: 1,
+        },
+        Rectangle {
+            width: 3,
+            height: 5,
+        },
+        Rectangle {
+            width: 7,
+            height: 12,
+        },
+    ];
+
+    // This is a mutable capture, even though it doesn't change `r`
+    list.sort_by_key(|r| r.width);
+    println!("{:#?}", list);
+}
+
 fn main() {
     test_immutable();
     test_move();
+    test_rect();
 }
