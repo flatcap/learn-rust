@@ -30,8 +30,56 @@ fn iterator_map() {
     }
 }
 
+#[derive(PartialEq, Debug)]
+struct Shoe {
+    size: u32,
+    style: String,
+}
+
+fn shoes_in_size(shoes: Vec<Shoe>, shoe_size: u32) -> Vec<Shoe> {
+    shoes.into_iter().filter(|s| s.size == shoe_size).collect()
+}
+
+fn iterator_filter() {
+    let shoes = vec![
+        Shoe {
+            size: 10,
+            style: String::from("sneaker"),
+        },
+        Shoe {
+            size: 13,
+            style: String::from("sandal"),
+        },
+        Shoe {
+            size: 10,
+            style: String::from("boot"),
+        },
+    ];
+
+    let in_my_size = shoes_in_size(shoes, 10);
+
+    assert_eq!(
+        in_my_size,
+        vec![
+            Shoe {
+                size: 10,
+                style: String::from("sneaker")
+            },
+            Shoe {
+                size: 10,
+                style: String::from("boot")
+            },
+        ]
+    );
+
+    for shoe in in_my_size {
+        println!("my size: {}: {}", shoe.size, shoe.style);
+    }
+}
+
 fn main() {
     iterator_simple();
     iterator_sum();
     iterator_map();
+    iterator_filter();
 }
