@@ -1,3 +1,8 @@
+//! # My Crate
+//!
+//! `comment` is a collection of utilities to make performing certain
+//! calculations more convenient.
+
 /// Adds one to the number given.
 ///
 /// # Examples
