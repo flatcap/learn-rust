@@ -78,6 +78,15 @@ fn test_custom() {
     println!("CustomSmartPointers created.");
 }
 
+fn test_force_drop() {
+    let c = CustomSmartPointer {
+        data: String::from("some data"),
+    };
+    println!("CustomSmartPointer created.");
+    drop(c);
+    println!("CustomSmartPointer dropped before the end of main.");
+}
+
 fn main() {
     test_box();
     test_list();
