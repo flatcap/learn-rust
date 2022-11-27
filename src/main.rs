@@ -49,6 +49,15 @@ fn test_mybox() {
     assert_eq!(5, *y);
 }
 
+fn hello(name: &str) {
+    println!("Hello, {name}!");
+}
+
+fn test_double() {
+    let m = MyBox::new(String::from("Rust"));
+    hello(&m);
+}
+
 fn main() {
     test_box();
     test_list();
