@@ -58,9 +58,30 @@ fn test_double() {
     hello(&m);
 }
 
+struct CustomSmartPointer {
+    data: String,
+}
+
+impl Drop for CustomSmartPointer {
+    fn drop(&mut self) {
+        println!("Dropping CustomSmartPointer with data `{}`!", self.data);
+    }
+}
+
+fn test_custom() {
+    let c = CustomSmartPointer {
+        data: String::from("my stuff"),
+    };
+    let d = CustomSmartPointer {
+        data: String::from("other stuff"),
+    };
+    println!("CustomSmartPointers created.");
+}
+
 fn main() {
     test_box();
     test_list();
     test_deref();
     test_mybox();
+    test_custom();
 }
