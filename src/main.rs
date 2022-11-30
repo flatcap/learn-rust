@@ -28,8 +28,7 @@ fn pig_latin(word: &str) -> String {
 
     match initial {
         'a' | 'e' | 'i' | 'o' | 'u' => pig_vowel(word),
-        'b' | 'c' | 'd' | 'f' | 'g' | 'h' | 'j' | 'k' | 'l' | 'm' | 'n' | 'p' | 'q' | 'r' | 's'
-        | 't' | 'v' | 'w' | 'x' | 'y' | 'z' => pig_consonant(word),
+        'a'..='z' => pig_consonant(word),
         _ => word.to_string(),
     }
 }
