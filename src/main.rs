@@ -120,6 +120,38 @@ fn dest_eight() {
     }
 }
 
+fn dest_nine() {
+    let x = Some(5);
+    let y = 10;
+
+    match x {
+        Some(50) => println!("Got 50"),
+        // The following line assigns x's value into a shadow y
+        Some(y) => println!("Matched, y = {y}"),
+        _ => println!("Default case, x = {:?}", x),
+    }
+
+    println!("at the end: x = {:?}, y = {y}", x);
+
+    match x {
+        Some(50) => println!("Got 50"),
+        // Using a match guard fixes the behaviour
+        Some(n) if n == y => println!("Matched, n = {n}"),
+        _ => println!("Default case, x = {:?}", x),
+    }
+
+    println!("at the end: x = {:?}, y = {y}", x);
+
+    let x = 4;
+    let y = false;
+
+    match x {
+        // Here the match guard applies to all three cases: 4, 5, 6
+        4 | 5 | 6 if y => println!("yes"),
+        _ => println!("no"),
+    }
+}
+
 fn main() {
     dest_one();
     dest_two();
@@ -129,4 +161,5 @@ fn main() {
     dest_six();
     dest_seven();
     dest_eight();
+    dest_nine();
 }
