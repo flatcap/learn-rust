@@ -100,6 +100,16 @@ fn dest_six() {
     }
 }
 
+fn dest_seven() {
+    let numbers = (2, 4, 8, 16, 32);
+
+    match numbers {
+        (first, .., last) => {
+            println!("Some numbers: {first}, {last}");
+        }
+    }
+}
+
 fn main() {
     dest_one();
     dest_two();
@@ -107,4 +117,5 @@ fn main() {
     dest_four();
     dest_five();
     dest_six();
+    dest_seven();
 }
