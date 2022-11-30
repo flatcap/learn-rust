@@ -24,6 +24,34 @@ fn dest_one() {
     }
 }
 
+enum Color {
+    Rgb(i32, i32, i32),
+    Hsv(i32, i32, i32),
+}
+
+enum Message2 {
+    Quit,
+    Move { x: i32, y: i32 },
+    Write(String),
+    ChangeColor(Color),
+}
+
+fn dest_two() {
+    let msg = Message2::ChangeColor(Color::Hsv(0, 160, 255));
+
+    match msg {
+        Message2::ChangeColor(Color::Rgb(r, g, b)) => {
+            println!("Change the color to red {}, green {}, and blue {}", r, g, b)
+        }
+        Message2::ChangeColor(Color::Hsv(h, s, v)) => println!(
+            "Change the color to hue {}, saturation {}, and value {}",
+            h, s, v
+        ),
+        _ => (),
+    }
+}
+
 fn main() {
     dest_one();
+    dest_two();
 }
