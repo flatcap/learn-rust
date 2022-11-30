@@ -152,6 +152,24 @@ fn dest_nine() {
     }
 }
 
+fn dest_ten() {
+    enum Message {
+        Hello { id: i32 },
+    }
+
+    let msg = Message::Hello { id: 5 };
+
+    match msg {
+        Message::Hello {
+            id: id_variable @ 3..=7,
+        } => println!("Found an id in range: {}", id_variable),
+        Message::Hello { id: 10..=12 } => {
+            println!("Found an id in another range")
+        }
+        Message::Hello { id } => println!("Found some other id: {}", id),
+    }
+}
+
 fn main() {
     dest_one();
     dest_two();
@@ -162,4 +180,5 @@ fn main() {
     dest_seven();
     dest_eight();
     dest_nine();
+    dest_ten();
 }
