@@ -51,12 +51,12 @@ fn dest_two() {
     }
 }
 
-struct Point {
-    x: i32,
-    y: i32,
-}
-
 fn dest_three() {
+    struct Point {
+        x: i32,
+        y: i32,
+    }
+
     let ((feet, inches), Point { x, y }) = ((3, 10), Point { x: 3, y: -10 });
 }
 
@@ -86,10 +86,25 @@ fn dest_five() {
     }
 }
 
+fn dest_six() {
+    struct Point {
+        x: i32,
+        y: i32,
+        z: i32,
+    }
+
+    let origin = Point { x: 0, y: 0, z: 0 };
+
+    match origin {
+        Point { x, .. } => println!("x is {}", x),
+    }
+}
+
 fn main() {
     dest_one();
     dest_two();
     dest_three();
     dest_four();
     dest_five();
+    dest_six();
 }
