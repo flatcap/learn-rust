@@ -1,3 +1,5 @@
+use std::ops::DerefMut;
+
 pub struct Post {
     state: Option<Box<dyn State>>,
     content: String,
@@ -52,7 +54,7 @@ struct Draft {}
 
 impl State for Draft {
     fn request_review(self: Box<Self>) -> Box<dyn State> {
-        Box::new(PendingReview {})
+        Box::new(PendingReview { approvals: 0 })
     }
 
     fn reject(self: Box<Self>) -> Box<dyn State> {
@@ -64,7 +66,9 @@ impl State for Draft {
     }
 }
 
-struct PendingReview {}
+struct PendingReview {
+    approvals: u32,
+}
 
 impl State for PendingReview {
     fn request_review(self: Box<Self>) -> Box<dyn State> {
@@ -75,8 +79,14 @@ impl State for PendingReview {
         Box::new(Draft {})
     }
 
-    fn approve(self: Box<Self>) -> Box<dyn State> {
-        Box::new(Published {})
+    fn approve(mut self: Box<Self>) -> Box<dyn State> {
+        let pend = self.deref_mut();
+        pend.approvals = pend.approvals + 1;
+        if pend.approvals < 2 {
+            self
+        } else {
+            Box::new(Published {})
+        }
     }
 }
 
