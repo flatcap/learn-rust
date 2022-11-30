@@ -76,9 +76,20 @@ fn dest_four() {
     println!("setting is {:?}", setting_value);
 }
 
+fn dest_five() {
+    let numbers = (2, 4, 8, 16, 32);
+
+    match numbers {
+        (first, _, third, _, fifth) => {
+            println!("Some numbers: {first}, {third}, {fifth}")
+        }
+    }
+}
+
 fn main() {
     dest_one();
     dest_two();
     dest_three();
     dest_four();
+    dest_five();
 }
