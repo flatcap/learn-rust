@@ -51,7 +51,17 @@ fn dest_two() {
     }
 }
 
+struct Point {
+    x: i32,
+    y: i32,
+}
+
+fn dest_three() {
+    let ((feet, inches), Point { x, y }) = ((3, 10), Point { x: 3, y: -10 });
+}
+
 fn main() {
     dest_one();
     dest_two();
+    dest_three();
 }
