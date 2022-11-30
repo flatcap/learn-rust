@@ -110,6 +110,16 @@ fn dest_seven() {
     }
 }
 
+fn dest_eight() {
+    let num = Some(4);
+
+    match num {
+        Some(x) if x % 2 == 0 => println!("The number {} is even", x),
+        Some(x) => println!("The number {} is odd", x),
+        None => (),
+    }
+}
+
 fn main() {
     dest_one();
     dest_two();
@@ -118,4 +128,5 @@ fn main() {
     dest_five();
     dest_six();
     dest_seven();
+    dest_eight();
 }
