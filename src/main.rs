@@ -21,6 +21,9 @@ fn main() {
     post.approve();
     assert_eq!("I ate a salad for lunch today", post.content());
 
+    post.add_text("addendum");
+    assert_eq!("I ate a salad for lunch today", post.content());
+
     post.reject();
     assert_eq!("", post.content());
 

@@ -14,7 +14,9 @@ impl Post {
     }
 
     pub fn add_text(&mut self, text: &str) {
-        self.content.push_str(text);
+        if self.state.as_ref().unwrap().is_editable() {
+            self.content.push_str(text);
+        }
     }
 
     pub fn content(&self) -> &str {
@@ -44,6 +46,9 @@ trait State {
     fn request_review(self: Box<Self>) -> Box<dyn State>;
     fn reject(self: Box<Self>) -> Box<dyn State>;
     fn approve(self: Box<Self>) -> Box<dyn State>;
+    fn is_editable(&self) -> bool {
+        false
+    }
 
     fn content<'a>(&self, _post: &'a Post) -> &'a str {
         ""
@@ -53,6 +58,10 @@ trait State {
 struct Draft {}
 
 impl State for Draft {
+    fn is_editable(&self) -> bool {
+        true
+    }
+
     fn request_review(self: Box<Self>) -> Box<dyn State> {
         Box::new(PendingReview { approvals: 0 })
     }
