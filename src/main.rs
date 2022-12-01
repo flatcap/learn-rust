@@ -3,12 +3,10 @@ use std::io::Write;
 
 // Generate the n'th Fibonacci number
 fn fibonacci(n: u32) -> u32 {
-    if n == 0 {
-        0
-    } else if n == 1 {
-        1
-    } else {
-        fibonacci(n - 2) + fibonacci(n - 1)
+    match n {
+        0 => 0,
+        1 => 1,
+        _ => fibonacci(n - 2) + fibonacci(n - 1),
     }
 }
 
