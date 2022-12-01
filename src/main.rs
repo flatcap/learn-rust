@@ -33,7 +33,18 @@ fn test_split() {
     let (left, right) = split_at_mut(&mut vector, 3);
 }
 
+extern "C" {
+    fn abs(input: i32) -> i32;
+}
+
+fn test_extern() {
+    unsafe {
+        println!("Absolute value of -3 according to C: {}", abs(-3));
+    }
+}
+
 fn main() {
     test_pointers();
     test_split();
+    test_extern();
 }
