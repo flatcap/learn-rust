@@ -43,8 +43,25 @@ fn test_extern() {
     }
 }
 
+static mut COUNTER: u32 = 0;
+
+fn add_to_count(inc: u32) {
+    unsafe {
+        COUNTER += inc;
+    }
+}
+
+fn test_global() {
+    add_to_count(3);
+
+    unsafe {
+        println!("COUNTER: {}", COUNTER);
+    }
+}
+
 fn main() {
     test_pointers();
     test_split();
     test_extern();
+    test_global();
 }
