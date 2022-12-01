@@ -1,4 +1,4 @@
-fn main() {
+fn test_pointers() {
     let mut num = 5;
 
     let r1 = &num as *const i32;
@@ -8,4 +8,8 @@ fn main() {
         println!("r1 is: {}", *r1);
         println!("r2 is: {}", *r2);
     }
+}
+
+fn main() {
+    test_pointers();
 }
