@@ -152,9 +152,23 @@ fn test_outline() {
     p.outline_print();
 }
 
+struct Wrapper(Vec<String>);
+
+impl fmt::Display for Wrapper {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "[{}]", self.0.join(", "))
+    }
+}
+
+fn test_new_type() {
+    let w = Wrapper(vec![String::from("hello"), String::from("world")]);
+    println!("w = {}", w);
+}
+
 fn main() {
     test_point();
     test_fly();
     test_animal();
     test_outline();
+    test_new_type();
 }
