@@ -1,5 +1,5 @@
 [package]
-name = "state_obj"
+name = "state-obj"
 version = "0.1.0"
 edition = "2021"
 
